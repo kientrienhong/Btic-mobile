@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AuthenActivity">
+    tools:context=".feature.authen.AuthenActivity">
 
     <ImageView
         android:id="@+id/logo"
@@ -55,7 +55,7 @@
         app:layout_constraintBottom_toBottomOf="parent">
 
         <com.example.bticapplication.customview.MyTextField
-            android:id="@+id/txt_email"
+            android:id="@+id/edt_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="16dp"
@@ -68,13 +68,13 @@
             app:textSize="14" />
 
         <com.example.bticapplication.customview.MyTextField
-            android:id="@+id/password"
+            android:id="@+id/edt_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
             android:padding="16dp"
             app:hint="Password"
-            app:layout_constraintTop_toBottomOf="@id/txt_email"
+            app:layout_constraintTop_toBottomOf="@id/edt_email"
             app:myInputType="textPassword"
             app:prefixImage="@drawable/lock"
             app:prefixImageSize="24dp"
@@ -91,8 +91,8 @@
             app:buttonBackgroundColor="@color/primary"
             app:buttonBorderRadius="16"
             app:buttonTextStyle="@style/Button"
-            app:layout_constraintTop_toBottomOf="@id/password"
-            app:text="Sign up"
+            app:layout_constraintTop_toBottomOf="@id/edt_password"
+            app:text="Sign in"
             app:textSizeProgressButton="20" />
 
     </com.example.bticapplication.customview.RoundedGroupView>

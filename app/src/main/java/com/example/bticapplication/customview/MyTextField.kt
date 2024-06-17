@@ -3,6 +3,7 @@ package com.example.bticapplication.customview
 import android.content.Context
 import android.graphics.Color
 import android.util.AttributeSet
+import android.util.Log
 import android.view.Gravity.CENTER_VERTICAL
 import android.view.View
 import android.widget.EditText
@@ -72,10 +73,9 @@ class MyTextField @JvmOverloads constructor(
 
         val hint = typedArray.getText(R.styleable.MyTextField_hint).toString()
         val textSize = typedArray.getFloat(R.styleable.MyTextField_textSize, 0F)
-        val inputType = typedArray.getType(R.styleable.MyTextField_myInputType)
+        val inputType = typedArray.getInt(R.styleable.MyTextField_myInputType, 0)
         val textColor = typedArray.getColor(R.styleable.MyTextField_textColor, Color.BLACK)
         val type = ResourcesCompat.getFont(context, R.font.roboto_medium)
-
         editText = EditText(context).apply {
             setHint(hint)
             setTextSize(textSize)

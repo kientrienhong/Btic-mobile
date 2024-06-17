@@ -62,7 +62,7 @@ dependencies {
     // TODO Define dependency in lib.version.toml
     val room_version = "2.6.1"
     val lifecycle_version = "2.8.2"
-
+    val hilt_version = "2.50"
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
@@ -73,12 +73,13 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
 
     //Dagger
-    implementation("com.google.dagger:hilt-android:2.44")
-    kapt("com.google.dagger:hilt-android-compiler:2.44")
+    implementation("com.google.dagger:hilt-android:$hilt_version")
+    kapt("com.google.dagger:hilt-android-compiler:$hilt_version")
 
     //Room
     implementation("androidx.room:room-runtime:$room_version")
     annotationProcessor("androidx.room:room-compiler:$room_version")
+    kapt("androidx.room:room-compiler:$room_version")
 
     // Room
     kapt("androidx.room:room-compiler:$room_version")
@@ -97,4 +98,12 @@ dependencies {
 
     //Retrofit
     implementation("com.squareup.retrofit2:retrofit:2.11.0")
+
+    //Serialization
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3")
+    implementation("com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:1.0.0")
+
+    //Okhttp3 for toMediaType()
+    implementation("com.squareup.okhttp3:okhttp:4.7.2")
+
 }
