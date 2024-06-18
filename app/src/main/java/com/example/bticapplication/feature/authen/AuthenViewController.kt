@@ -4,7 +4,6 @@ import android.widget.Toast
 import androidx.activity.ComponentActivity
 import com.example.bticapplication.databinding.ActivityAuthenBinding
 import com.example.bticapplication.feature.admin.HomeAdminActivity
-import com.example.bticapplication.feature.authen.model.Role
 import com.example.bticapplication.feature.user.home.HomeUserActivity
 
 class AuthenViewController(
@@ -39,7 +38,7 @@ class AuthenViewController(
                 }
 
                 is AuthenViewModel.AuthState.Success -> {
-                    if (it.user.role == Role.Admin) {
+                    if (it.user.role == "Admin") {
                         activity.startActivity(HomeAdminActivity.createIntent(activity))
                     } else {
                         activity.startActivity(HomeUserActivity.createIntent(activity))

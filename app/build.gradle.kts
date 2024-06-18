@@ -4,6 +4,7 @@ plugins {
     id("kotlin-kapt")
     id("com.google.dagger.hilt.android")
     id("androidx.room")
+    id("org.jetbrains.kotlin.plugin.serialization")
 }
 
 android {

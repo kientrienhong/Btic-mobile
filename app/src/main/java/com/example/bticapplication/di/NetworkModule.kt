@@ -16,6 +16,12 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
+    private val json = Json {
+        ignoreUnknownKeys = true
+        isLenient = true
+        coerceInputValues = true
+    }
+
     @Singleton
     @Provides
     fun providesOkHttpClient(): OkHttpClient =
@@ -26,10 +32,8 @@ object NetworkModule {
     @Singleton
     @Provides
     fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
-        val mediaType = "application/json".toMediaType()
-        val jsonConverter = Json {
-            ignoreUnknownKeys = true
-        }.asConverterFactory(mediaType)
+        val mediaType = "application/json; charset=UTF8".toMediaType()
+        val jsonConverter = json.asConverterFactory(mediaType)
         return Retrofit
             .Builder()
             .addConverterFactory(jsonConverter)

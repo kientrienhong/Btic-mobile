@@ -1,7 +1,7 @@
 package com.example.bticapplication.path
 
 object ServicePath {
-    const val BASE_PATH = "http:192.168.1.29:9292/"
+    const val BASE_PATH = "http://10.0.2.2:9292/"
 
     object Auth {
         private const val BASE_PATH = "auth/"
