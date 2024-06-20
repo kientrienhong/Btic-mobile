@@ -107,4 +107,6 @@ dependencies {
     //Okhttp3 for toMediaType()
     implementation("com.squareup.okhttp3:okhttp:4.7.2")
 
+    // Encrypt
+    implementation(libs.androidx.security.crypto.ktx)
 }
