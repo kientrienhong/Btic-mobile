@@ -3,4 +3,4 @@ package com.example.bticapplication.feature.authen.model
 import kotlinx.serialization.Serializable
 
 @Serializable
-class SignInResponse(val user: User, val jwt: String)
+class SignInRequest(val email: String, val password: String)

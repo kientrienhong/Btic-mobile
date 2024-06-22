@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.bticapplication.extensions.runBlocking
+import com.example.bticapplication.feature.authen.model.SignInRequest
 import com.example.bticapplication.feature.authen.model.User
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -20,7 +21,7 @@ class AuthenViewModel @Inject constructor(
 
     fun signIn(email: String, password: String) = viewModelScope.launch {
         val result = runBlocking(
-            onBlock = { authRepository.signIn(email, password) },
+            onBlock = { authRepository.signIn(SignInRequest(email, password)) },
             onSuccess = {
                 val user = it.user.copy()
                 AuthState.Success(user)

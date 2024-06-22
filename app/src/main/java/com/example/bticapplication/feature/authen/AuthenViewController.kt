@@ -4,6 +4,7 @@ import android.widget.Toast
 import androidx.activity.ComponentActivity
 import com.example.bticapplication.databinding.ActivityAuthenBinding
 import com.example.bticapplication.feature.admin.HomeAdminActivity
+import com.example.bticapplication.feature.authen.model.Role
 import com.example.bticapplication.feature.user.home.HomeUserActivity
 
 class AuthenViewController(
@@ -15,13 +16,14 @@ class AuthenViewController(
     init {
         initView()
         observeData()
+        signIn()
     }
 
     private fun initView() {
-        binding.btnSignIn.setOnClickListener { signInOnClick() }
+        binding.btnSignIn.setOnClickListener { signIn() }
     }
 
-    private fun signInOnClick() {
+    private fun signIn() {
         val email: String = binding.edtEmail.text
         val password: String = binding.edtPassword.text
         viewModel.signIn(email, password)
@@ -38,7 +40,7 @@ class AuthenViewController(
                 }
 
                 is AuthenViewModel.AuthState.Success -> {
-                    if (it.user.role == "Admin") {
+                    if (it.user.role == Role.Admin) {
                         activity.startActivity(HomeAdminActivity.createIntent(activity))
                     } else {
                         activity.startActivity(HomeUserActivity.createIntent(activity))
@@ -46,7 +48,7 @@ class AuthenViewController(
                 }
 
                 is AuthenViewModel.AuthState.Error -> {
-                    binding.btnSignIn.setOnClickListener { signInOnClick() }
+                    binding.btnSignIn.setOnClickListener { signIn() }
                     Toast.makeText(activity, it.exception.message, Toast.LENGTH_SHORT).show()
                 }
 

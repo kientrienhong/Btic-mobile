@@ -64,6 +64,7 @@ dependencies {
     val room_version = "2.6.1"
     val lifecycle_version = "2.8.2"
     val hilt_version = "2.50"
+    val security_version = "1.0.0-alpha02"
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
@@ -108,5 +109,5 @@ dependencies {
     implementation("com.squareup.okhttp3:okhttp:4.7.2")
 
     // Encrypt
-    implementation(libs.androidx.security.crypto.ktx)
+    implementation("androidx.security:security-crypto:$security_version")
 }
