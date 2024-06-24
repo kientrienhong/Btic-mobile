@@ -18,7 +18,7 @@ object PreferenceUtil {
         return sharedPreferences.getString(key, null)
     }
 
-    fun clear(context: Context, key: String, isSecure: Boolean) {
+    fun remove(context: Context, key: String, isSecure: Boolean) {
         val sharedPreferences = getSharePreference(context, isSecure)
         sharedPreferences.edit().remove(key)
     }

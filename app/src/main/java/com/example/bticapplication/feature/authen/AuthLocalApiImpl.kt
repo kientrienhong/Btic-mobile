@@ -24,4 +24,7 @@ class AuthLocalApiImpl @Inject constructor() : AuthLocalApi {
             Json.encodeToString(user),
             isSecure = true
         )
+
+    override fun deleteUser(context: Context) =
+        PreferenceUtil.remove(context, PreferenceUtil.PROFILE, isSecure = true)
 }

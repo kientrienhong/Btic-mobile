@@ -7,4 +7,6 @@ interface AuthLocalApi {
     fun getUserFromLocal(context: Context): User?
 
     fun insertUserToLocal(context: Context, user: User)
+
+    fun deleteUser(context: Context)
 }
