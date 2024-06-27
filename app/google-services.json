@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "956577697334",
+    "project_id": "btix-158ea",
+    "storage_bucket": "btix-158ea.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:956577697334:android:b25db93ff093dc61dbd297",
+        "android_client_info": {
+          "package_name": "com.example.biticapplication"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBaRggGAdiuumd5yTF-4PtREP_08RbGKDE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:956577697334:android:f3b46e83dfd239e4dbd297",
+        "android_client_info": {
+          "package_name": "com.example.bticapplication"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBaRggGAdiuumd5yTF-4PtREP_08RbGKDE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

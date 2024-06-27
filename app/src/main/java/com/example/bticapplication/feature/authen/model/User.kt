@@ -34,14 +34,14 @@ data class User(
         // TODO Need to improve this
         override fun createFromParcel(`in`: Parcel): User {
             return User(
-                `in`.readInt(),
-                `in`.readString() ?: "",
-                `in`.readString() ?: "",
-                `in`.readString() ?: "",
-                `in`.readString() ?: "",
-                Role.valueOf(`in`.readString() ?: ""),
-                `in`.readString() ?: "",
-                `in`.readString() ?: ""
+                id = `in`.readInt(),
+                email = `in`.readString() ?: "",
+                password = `in`.readString() ?: "",
+                name = `in`.readString() ?: "",
+                birthDay = `in`.readString() ?: "",
+                role = Role.valueOf(`in`.readString() ?: ""),
+                refreshToken = `in`.readString() ?: "",
+                accessToken = `in`.readString() ?: ""
             )
         }
 

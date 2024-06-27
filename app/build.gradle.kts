@@ -5,6 +5,7 @@ plugins {
     id("com.google.dagger.hilt.android")
     id("androidx.room")
     id("org.jetbrains.kotlin.plugin.serialization")
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -110,4 +111,9 @@ dependencies {
 
     // Encrypt
     implementation("androidx.security:security-crypto:$security_version")
+
+    // Firebase BoM
+    implementation(platform("com.google.firebase:firebase-bom:33.1.1"))
+    // When using the BoM, you don't specify versions in Firebase library dependencies
+    implementation("com.google.firebase:firebase-storage")
 }

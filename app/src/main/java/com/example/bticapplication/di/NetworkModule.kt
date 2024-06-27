@@ -6,6 +6,7 @@ import com.example.bticapplication.feature.authen.AuthLocalApiImpl
 import com.example.bticapplication.feature.authen.AuthRemoteApi
 import com.example.bticapplication.feature.authen.AuthRepository
 import com.example.bticapplication.feature.authen.AuthRepositoryImpl
+import com.example.bticapplication.feature.splash.SplashScreenRepository
 import com.example.bticapplication.path.ServicePath
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import dagger.Binds
@@ -69,5 +70,10 @@ abstract class NetworkModule {
 
         @Provides
         fun provideApplicationContext(@ApplicationContext context: Context): Context = context
+
+        @Provides
+        @Singleton
+        fun provideSplashScreenRepository(retrofit: Retrofit): SplashScreenRepository =
+            retrofit.create(SplashScreenRepository::class.java)
     }
 }

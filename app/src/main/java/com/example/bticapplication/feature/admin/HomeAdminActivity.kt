@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.bticapplication.R
+import com.example.bticapplication.feature.cinema.CinemaBrand
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -24,6 +25,10 @@ class HomeAdminActivity : AppCompatActivity() {
     }
 
     companion object {
-        fun createIntent(context: Context): Intent = Intent(context, HomeAdminActivity::class.java)
+
+        private const val LIST_BRAND_NAME = "list_brand_name"
+        fun createIntent(context: Context, listBrandName: ArrayList<CinemaBrand>): Intent = Intent(context, HomeAdminActivity::class.java).apply {
+            putParcelableArrayListExtra(LIST_BRAND_NAME, listBrandName)
+        }
     }
 }

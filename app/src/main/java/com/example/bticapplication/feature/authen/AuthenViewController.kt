@@ -3,9 +3,7 @@ package com.example.bticapplication.feature.authen
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import com.example.bticapplication.databinding.ActivityAuthenBinding
-import com.example.bticapplication.feature.admin.HomeAdminActivity
-import com.example.bticapplication.feature.authen.model.Role
-import com.example.bticapplication.feature.user.home.HomeUserActivity
+import com.example.bticapplication.feature.splash.SplashScreenActivity
 
 class AuthenViewController(
     private val activity: ComponentActivity,
@@ -40,11 +38,7 @@ class AuthenViewController(
                 }
 
                 is AuthenViewModel.AuthState.Success -> {
-                    if (it.user.role == Role.Admin) {
-                        activity.startActivity(HomeAdminActivity.createIntent(activity))
-                    } else {
-                        activity.startActivity(HomeUserActivity.createIntent(activity))
-                    }
+                    activity.startActivity(SplashScreenActivity.createIntent(activity, it.user))
                 }
 
                 is AuthenViewModel.AuthState.Error -> {

@@ -8,9 +8,12 @@ import com.example.bticapplication.extensions.runBlocking
 import com.example.bticapplication.feature.cinema.CinemaBrand
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 @HiltViewModel
-class SplashScreenViewModel(private val repository: SplashScreenRepository) : ViewModel() {
+class SplashScreenViewModel @Inject constructor(
+    private val repository: SplashScreenRepository
+) : ViewModel() {
     private val brandCinemaRetrieveStatusMutable: MutableLiveData<BrandCinemaRetrieveStatus> =
         MutableLiveData()
     val brandCinemaRetrieveStatus: LiveData<BrandCinemaRetrieveStatus> =

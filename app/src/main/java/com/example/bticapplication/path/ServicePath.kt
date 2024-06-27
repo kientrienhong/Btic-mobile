@@ -10,4 +10,8 @@ object ServicePath {
         const val SIGN_UP = BASE_PATH + "sign-up"
         const val REFRESH_ACCESS_TOKEN = BASE_PATH + "refresh-token"
     }
+
+    object CinemaBrand {
+        const val BASE_PATH = "cinema-brand"
+    }
 }
