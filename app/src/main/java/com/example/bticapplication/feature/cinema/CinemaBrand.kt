@@ -2,10 +2,14 @@ package com.example.bticapplication.feature.cinema
 
 import android.os.Parcel
 import android.os.Parcelable
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import kotlinx.serialization.Serializable
 
+@Entity(tableName = "cinema_brand")
 @Serializable
 data class CinemaBrand(
+    @PrimaryKey
     val id: Int,
     val name: String,
     val imageUrl: String

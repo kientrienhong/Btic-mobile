@@ -3,6 +3,7 @@ package com.example.bticapplication.feature.splash
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
@@ -15,7 +16,6 @@ import com.example.bticapplication.extensions.parcelable
 import com.example.bticapplication.feature.admin.HomeAdminActivity
 import com.example.bticapplication.feature.authen.model.Role
 import com.example.bticapplication.feature.authen.model.User
-import com.example.bticapplication.feature.cinema.CinemaBrand
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -47,14 +47,12 @@ class SplashScreenActivity : AppCompatActivity() {
         viewModel.brandCinemaRetrieveStatus.observe(this) {
             when (it) {
                 is BrandCinemaRetrieveStatus.Error -> {
+                    Log.e(TAG, it.exception.message, it.exception)
                     Toast.makeText(this, it.exception.message, Toast.LENGTH_SHORT).show()
                 }
 
                 is BrandCinemaRetrieveStatus.Success -> {
-                    val arrayList = arrayListOf<CinemaBrand>().apply {
-                        addAll(it.list)
-                    }
-                    startActivity(HomeAdminActivity.createIntent(this, arrayList))
+                    startActivity(HomeAdminActivity.createIntent(this))
                 }
 
                 is BrandCinemaRetrieveStatus.Loading -> Unit
@@ -63,6 +61,7 @@ class SplashScreenActivity : AppCompatActivity() {
     }
 
     companion object {
+        private val TAG = SplashScreenActivity::class.java.simpleName
         private const val USER = "user"
         fun createIntent(context: Context, user: User) =
             Intent(context, SplashScreenActivity::class.java).apply {

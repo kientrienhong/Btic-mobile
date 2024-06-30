@@ -20,9 +20,13 @@ class SplashScreenViewModel @Inject constructor(
         brandCinemaRetrieveStatusMutable
 
     fun getBrandCinemaList() = viewModelScope.launch {
+        brandCinemaRetrieveStatusMutable.value = BrandCinemaRetrieveStatus.Loading
         val result = runBlocking(
             onBlock = { repository.getBrandCinemaList() },
-            onSuccess = { BrandCinemaRetrieveStatus.Success(it) },
+            onSuccess = {
+                repository.saveCinemaBrandList(it)
+                BrandCinemaRetrieveStatus.Success(it)
+            },
             onError = { BrandCinemaRetrieveStatus.Error(it) }
         )
         brandCinemaRetrieveStatusMutable.value = result
@@ -30,7 +34,7 @@ class SplashScreenViewModel @Inject constructor(
 }
 
 sealed class BrandCinemaRetrieveStatus {
-    class Success(val list: List<CinemaBrand>) : BrandCinemaRetrieveStatus()
+    class Success(list: List<CinemaBrand>) : BrandCinemaRetrieveStatus()
     class Error(val exception: Exception) : BrandCinemaRetrieveStatus()
     data object Loading : BrandCinemaRetrieveStatus()
 }
