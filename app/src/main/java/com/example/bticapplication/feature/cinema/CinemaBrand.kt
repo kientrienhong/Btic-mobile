@@ -35,5 +35,8 @@ data class CinemaBrand(
         override fun newArray(size: Int): Array<CinemaBrand?> {
             return arrayOfNulls(size)
         }
+
+        fun newInstanceWithoutId(name: String, imageUrl: String) =
+            CinemaBrand(-1, name = name, imageUrl = imageUrl)
     }
 }

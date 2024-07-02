@@ -18,7 +18,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class HomeAdminActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAdminBinding
     private lateinit var adapter: CinemaBrandAdapter
-    private val viewModel by viewModels<HomeAdminViewModel>()
+    private val viewModel by viewModels<CinemaBrandViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,7 +49,6 @@ class HomeAdminActivity : AppCompatActivity() {
                 is CinemaBrandItemViewListGetStatus.Success -> {
                     adapter.submit(it.data)
                 }
-
                 is CinemaBrandItemViewListGetStatus.Error -> {
                     Toast.makeText(this, it.exception.message, Toast.LENGTH_SHORT).show()
                 }

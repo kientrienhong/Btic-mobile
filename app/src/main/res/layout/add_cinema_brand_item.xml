@@ -3,7 +3,7 @@
     android:layout_width="152dp"
     android:layout_height="80dp"
     android:layout_marginEnd="16dp"
-    android:background="@drawable/add_cinema_brand_item_background">
+    android:background="@drawable/add_item_background">
 
     <ImageView
         android:layout_width="24dp"

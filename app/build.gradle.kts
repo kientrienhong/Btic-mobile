@@ -66,6 +66,8 @@ dependencies {
     val lifecycle_version = "2.8.2"
     val hilt_version = "2.50"
     val security_version = "1.0.0-alpha02"
+    val activity_version = "1.9.0"
+    val fragment_version = "1.8.0"
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
@@ -95,6 +97,10 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-viewmodel-savedstate:$lifecycle_version")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version")
     kapt("androidx.lifecycle:lifecycle-compiler:$lifecycle_version")
+
+    //Activity + Fragment
+    implementation("androidx.activity:activity-ktx:$activity_version")
+    implementation("androidx.fragment:fragment-ktx:$fragment_version")
 
     //LiveData
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version")
