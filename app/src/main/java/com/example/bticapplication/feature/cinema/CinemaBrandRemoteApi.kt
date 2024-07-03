@@ -1,6 +1,7 @@
 package com.example.bticapplication.feature.cinema
 
 import com.example.bticapplication.path.ServicePath
+import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.Headers
 import retrofit2.http.POST
@@ -13,7 +14,7 @@ interface CinemaBrandRemoteApi {
 
     @Headers("Content-Type:application/json")
     @POST(ServicePath.CinemaBrand.BASE_PATH)
-    suspend fun create(cinemaBrand: CinemaBrand)
+    suspend fun create(@Body cinemaBrand: CinemaBrand)
 
     suspend fun delete(cinemaBrand: CinemaBrand)
 

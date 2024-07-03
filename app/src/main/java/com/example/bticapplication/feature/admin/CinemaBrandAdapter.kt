@@ -10,7 +10,9 @@ import com.example.bticapplication.databinding.CinemaBrandItemBinding
 import com.example.bticapplication.feature.admin.viewholder.AddCinemaBrandViewHolder
 import com.example.bticapplication.feature.admin.viewholder.CinemaBrandViewHolder
 
-class CinemaBrandAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class CinemaBrandAdapter(
+    private val showAddCinemaBrand: () -> Unit
+) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private val diff = AsyncListDiffer(this, cinemaBrandDiffItemCallback)
 
@@ -23,7 +25,8 @@ class CinemaBrandAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                     LayoutInflater.from(parent.context),
                     parent,
                     false
-                )
+                ),
+                showAddCinemaBrand
             )
 
             else -> CinemaBrandViewHolder(

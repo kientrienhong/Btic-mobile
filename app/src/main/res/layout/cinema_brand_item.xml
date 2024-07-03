@@ -4,58 +4,69 @@
     android:layout_width="152dp"
     android:layout_height="80dp"
     android:layout_marginEnd="16dp"
-    android:elevation="8dp">
+    android:elevation="8dp"
+    android:padding="3dp"
+    app:borderRadius="16dp">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        app:cardCornerRadius="16dp">
 
         <ImageView
             android:id="@+id/logo"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_gravity="center"
             android:contentDescription="@null"
-            android:scaleType="centerInside"
+            android:scaleType="fitXY"
             android:src="@drawable/baseline_add_24" />
+    </androidx.cardview.widget.CardView>
 
-        <com.example.bticapplication.customview.RoundedGroupView
-            android:id="@+id/edit_icon_layout"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
+
+    <com.example.bticapplication.customview.RoundedGroupView
+        android:id="@+id/edit_icon_layout"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginEnd="8dp"
+        android:background="@color/white"
+        android:elevation="8dp"
+        app:borderRadius="16dp"
+        app:layout_constraintBottom_toBottomOf="@id/delete_icon_layout"
+        app:layout_constraintEnd_toStartOf="@id/delete_icon_layout"
+        app:layout_constraintTop_toTopOf="@id/delete_icon_layout">
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/edit_icon"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/delete_icon_layout">
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/edit_icon"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+    </com.example.bticapplication.customview.RoundedGroupView>
 
-        </com.example.bticapplication.customview.RoundedGroupView>
+    <com.example.bticapplication.customview.RoundedGroupView
+        android:id="@+id/delete_icon_layout"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@color/white"
+        android:elevation="8dp"
+        app:borderRadius="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
-        <com.example.bticapplication.customview.RoundedGroupView
-            android:id="@+id/delete_icon_layout"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/delete_icon"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/delete_icon"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-
-        </com.example.bticapplication.customview.RoundedGroupView>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.example.bticapplication.customview.RoundedGroupView>
 </com.example.bticapplication.customview.RoundedGroupView>

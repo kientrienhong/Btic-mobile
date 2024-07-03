@@ -1,5 +1,6 @@
 package com.example.bticapplication.feature.admin
 
+import android.net.Uri
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -11,8 +12,6 @@ import com.google.firebase.Firebase
 import com.google.firebase.storage.storage
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
-import java.io.File
-import java.io.FileInputStream
 import javax.inject.Inject
 
 @HiltViewModel
@@ -47,12 +46,11 @@ class CinemaBrandViewModel @Inject constructor(
         cinemaBrandItemViewListGetStatusMutable.value = result
     }
 
-    fun createCinemaBrand(image: File, name: String) = viewModelScope.launch {
+    fun createCinemaBrand(uri: Uri, name: String) = viewModelScope.launch {
         cinemaBrandCreateStatusMutable.value = CinemaBrandCreateStatus.Loading
-        val stream = FileInputStream(image)
         val storageRef = Firebase.storage.reference
         val mountainsRef = storageRef.child("images/$name")
-        val uploadTask = mountainsRef.putStream(stream)
+        val uploadTask = mountainsRef.putFile(uri)
 
         uploadTask.continueWithTask { task ->
             if (!task.isSuccessful) {

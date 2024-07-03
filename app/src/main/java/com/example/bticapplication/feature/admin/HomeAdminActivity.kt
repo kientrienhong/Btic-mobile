@@ -11,6 +11,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.bticapplication.R
+import com.example.bticapplication.customview.AddCinemaBrandDialog
 import com.example.bticapplication.databinding.ActivityAdminBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -30,7 +31,7 @@ class HomeAdminActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        adapter = CinemaBrandAdapter()
+        adapter = CinemaBrandAdapter(::showAddCinemaBrandDialog)
         binding.cinemaBrandListView.apply {
             adapter = this@HomeAdminActivity.adapter
             layoutManager = LinearLayoutManager(
@@ -56,7 +57,13 @@ class HomeAdminActivity : AppCompatActivity() {
         }
     }
 
+    private fun showAddCinemaBrandDialog() {
+        val dialog = AddCinemaBrandDialog()
+        dialog.show(supportFragmentManager, TAG)
+    }
+
     companion object {
+        private const val TAG = "AddCinemaBrandDialog"
         fun createIntent(context: Context): Intent = Intent(context, HomeAdminActivity::class.java)
     }
 }
