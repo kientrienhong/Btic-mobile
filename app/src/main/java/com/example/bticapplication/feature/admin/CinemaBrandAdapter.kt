@@ -1,5 +1,6 @@
 package com.example.bticapplication.feature.admin
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
@@ -74,12 +75,23 @@ class CinemaBrandAdapter(
         CinemaBrandType.NORMAL.ordinal
     }
 
+    private fun findIndexById(id: Int): Int =
+        diff.currentList.indexOfFirst { it.cinemaBrand.id == id }
+
     fun setSelectedId(id: Int) {
-        diff.currentList.forEach { cinemaBrandItemView ->
-            cinemaBrandItemView.isSelected = cinemaBrandItemView.cinemaBrand.id == id
-        }
+        val lastIndex = findIndexById(selectedId)
         selectedId = id
-        notifyDataSetChanged()
+        val index = findIndexById(id)
+
+        if (lastIndex != -1) {
+            diff.currentList[lastIndex].isSelected = false
+            notifyItemChanged(lastIndex + OFFSET_FOR_ADD_VIEW)
+        }
+
+        if (index != -1) {
+            diff.currentList[index].isSelected = true
+            notifyItemChanged(index + OFFSET_FOR_ADD_VIEW)
+        }
     }
 
     companion object {
