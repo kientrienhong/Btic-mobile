@@ -1,7 +1,16 @@
 package com.example.bticapplication.feature.cinema
 
+import androidx.lifecycle.LiveData
+
 interface CinemaBrandRepository {
-    suspend fun getList(): List<CinemaBrand>
+    fun getList(): LiveData<List<CinemaBrand>>
+
+    /**
+     * Fetching step:
+     * 1. Get list from remote
+     * 2. Save data to local
+     */
+    suspend fun fetchList()
 
     suspend fun create(cinemaBrand: CinemaBrand)
 

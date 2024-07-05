@@ -3,6 +3,7 @@ package com.example.bticapplication.feature.admin
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
@@ -44,13 +45,19 @@ class HomeAdminActivity : AppCompatActivity() {
     }
 
     private fun observeData() {
-        viewModel.cinemaBrandItemViewListGetStatus.observe(this) {
+        viewModel.getCinemaList().observe(this) {
+            adapter.submit(it)
+            adapter.listenChangeOnce {
+                adapter.setSelectedId(adapter.selectedId)
+            }
+        }
+
+        viewModel.cinemaBrandFetchingStatus.observe(this) {
             when (it) {
-                is CinemaBrandItemViewListGetStatus.Loading -> Unit
-                is CinemaBrandItemViewListGetStatus.Success -> {
-                    adapter.submit(it.data)
-                }
-                is CinemaBrandItemViewListGetStatus.Error -> {
+                is CinemaBrandFetchingStatus.Loading,
+                is CinemaBrandFetchingStatus.Success -> Unit
+
+                is CinemaBrandFetchingStatus.Error -> {
                     Toast.makeText(this, it.exception.message, Toast.LENGTH_SHORT).show()
                 }
             }

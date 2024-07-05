@@ -4,6 +4,7 @@ import android.net.Uri
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.map
 import androidx.lifecycle.viewModelScope
 import com.example.bticapplication.extensions.runBlocking
 import com.example.bticapplication.feature.cinema.CinemaBrand
@@ -19,31 +20,20 @@ class CinemaBrandViewModel @Inject constructor(
     private val cinemaBrandRepository: CinemaBrandRepository
 ) : ViewModel() {
 
-    private val cinemaBrandItemViewListGetStatusMutable =
-        MutableLiveData<CinemaBrandItemViewListGetStatus>()
-    val cinemaBrandItemViewListGetStatus: LiveData<CinemaBrandItemViewListGetStatus> =
-        cinemaBrandItemViewListGetStatusMutable
+    private val cinemaBrandFetchingStatusMutable =
+        MutableLiveData<CinemaBrandFetchingStatus>()
+    val cinemaBrandFetchingStatus: LiveData<CinemaBrandFetchingStatus> =
+        cinemaBrandFetchingStatusMutable
 
     private val cinemaBrandCreateStatusMutable = MutableLiveData<CinemaBrandCreateStatus>()
     val cinemaBrandCreateStatus: LiveData<CinemaBrandCreateStatus> = cinemaBrandCreateStatusMutable
 
     init {
-        getCinemaList()
+        fetchList()
     }
 
-    private fun getCinemaList() = viewModelScope.launch {
-        cinemaBrandItemViewListGetStatusMutable.value = CinemaBrandItemViewListGetStatus.Loading
-        val result = runBlocking(
-            onBlock = { cinemaBrandRepository.getList() },
-            onSuccess = {
-                val cinemaBrandItemViewList = it.mapIndexed { index, cinemaBrand ->
-                    CinemaBrandItemView(cinemaBrand, isSelected = index == 0)
-                }
-                CinemaBrandItemViewListGetStatus.Success(cinemaBrandItemViewList)
-            },
-            onError = { CinemaBrandItemViewListGetStatus.Error(it) }
-        )
-        cinemaBrandItemViewListGetStatusMutable.value = result
+    fun getCinemaList(): LiveData<List<CinemaBrandItemView>> = cinemaBrandRepository.getList().map {
+        it.map { cinemaBrand -> CinemaBrandItemView(cinemaBrand, isSelected = false) }
     }
 
     fun createCinemaBrand(uri: Uri, name: String) = viewModelScope.launch {
@@ -81,12 +71,22 @@ class CinemaBrandViewModel @Inject constructor(
             }
         }
     }
+
+    private fun fetchList() = viewModelScope.launch {
+        cinemaBrandFetchingStatusMutable.value = CinemaBrandFetchingStatus.Loading
+        val result = runBlocking(
+            onBlock = { cinemaBrandRepository.fetchList() },
+            onSuccess = { CinemaBrandFetchingStatus.Success },
+            onError = { CinemaBrandFetchingStatus.Error(it) }
+        )
+        cinemaBrandFetchingStatusMutable.value = result
+    }
 }
 
-sealed class CinemaBrandItemViewListGetStatus {
-    data object Loading : CinemaBrandItemViewListGetStatus()
-    data class Success(val data: List<CinemaBrandItemView>) : CinemaBrandItemViewListGetStatus()
-    data class Error(val exception: Exception) : CinemaBrandItemViewListGetStatus()
+sealed class CinemaBrandFetchingStatus {
+    data object Loading : CinemaBrandFetchingStatus()
+    data object Success : CinemaBrandFetchingStatus()
+    data class Error(val exception: Exception) : CinemaBrandFetchingStatus()
 }
 
 sealed class CinemaBrandCreateStatus {

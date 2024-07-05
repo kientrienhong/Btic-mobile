@@ -15,6 +15,21 @@ class CinemaBrandAdapter(
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private val diff = AsyncListDiffer(this, cinemaBrandDiffItemCallback)
+    var selectedId: Int = -1
+        private set
+
+    fun listenChangeOnce(action: () -> Unit) {
+        val listen = object : AsyncListDiffer.ListListener<CinemaBrandItemView> {
+            override fun onCurrentListChanged(
+                previousList: MutableList<CinemaBrandItemView>,
+                currentList: MutableList<CinemaBrandItemView>
+            ) {
+                action()
+                diff.removeListListener(this)
+            }
+        }
+        diff.addListListener(listen)
+    }
 
     fun submit(list: List<CinemaBrandItemView>): Unit = diff.submitList(list)
 
@@ -34,7 +49,8 @@ class CinemaBrandAdapter(
                     LayoutInflater.from(parent.context),
                     parent,
                     false
-                )
+                ),
+                ::setSelectedId
             )
         }
 
@@ -58,9 +74,16 @@ class CinemaBrandAdapter(
         CinemaBrandType.NORMAL.ordinal
     }
 
+    fun setSelectedId(id: Int) {
+        diff.currentList.forEach { cinemaBrandItemView ->
+            cinemaBrandItemView.isSelected = cinemaBrandItemView.cinemaBrand.id == id
+        }
+        selectedId = id
+        notifyDataSetChanged()
+    }
+
     companion object {
         private const val OFFSET_FOR_ADD_VIEW = 1
-
 
         private val cinemaBrandDiffItemCallback =
             object : DiffUtil.ItemCallback<CinemaBrandItemView>() {

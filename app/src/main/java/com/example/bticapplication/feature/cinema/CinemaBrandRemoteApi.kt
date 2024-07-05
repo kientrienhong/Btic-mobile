@@ -14,7 +14,7 @@ interface CinemaBrandRemoteApi {
 
     @Headers("Content-Type:application/json")
     @POST(ServicePath.CinemaBrand.BASE_PATH)
-    suspend fun create(@Body cinemaBrand: CinemaBrand)
+    suspend fun create(@Body cinemaBrand: CinemaBrand): CinemaBrand
 
     suspend fun delete(cinemaBrand: CinemaBrand)
 

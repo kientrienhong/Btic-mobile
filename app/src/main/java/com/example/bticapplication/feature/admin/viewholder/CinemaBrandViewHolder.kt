@@ -6,7 +6,10 @@ import com.example.bticapplication.R
 import com.example.bticapplication.databinding.CinemaBrandItemBinding
 import com.example.bticapplication.feature.admin.CinemaBrandItemView
 
-class CinemaBrandViewHolder(private val binding: CinemaBrandItemBinding) :
+class CinemaBrandViewHolder(
+    private val binding: CinemaBrandItemBinding,
+    private val setSelectedId: (Int) -> Unit
+) :
     RecyclerView.ViewHolder(binding.root) {
 
     fun bind(itemView: CinemaBrandItemView) {
@@ -20,8 +23,8 @@ class CinemaBrandViewHolder(private val binding: CinemaBrandItemBinding) :
 
         }
 
-        binding.logo.setOnClickListener {
-
+        binding.root.setOnClickListener {
+            setSelectedId(itemView.cinemaBrand.id)
         }
     }
 
