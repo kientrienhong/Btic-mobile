@@ -27,7 +27,8 @@ class CinemaBrandRepositoryImpl @Inject constructor(
     }
 
     override suspend fun delete(cinemaBrand: CinemaBrand) {
-        TODO("Not yet implemented")
+        cinemaBrandRemoteApi.delete(cinemaBrand.id)
+        cinemaBrandLocalApi.deleteCinema(cinemaBrand)
     }
 
     override suspend fun update(cinemaBrand: CinemaBrand) {

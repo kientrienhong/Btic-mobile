@@ -4,6 +4,7 @@ import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.GradientDrawable
 import android.util.AttributeSet
+import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.widget.FrameLayout
@@ -20,6 +21,12 @@ class ProgressButton @JvmOverloads constructor(
 ) : FrameLayout(context, attributeSet, defStyleAttr) {
     private lateinit var textView: TextView
     private lateinit var progressBar: CircularProgressIndicator
+    var text: String
+        get() = textView.text.toString()
+        set(value) {
+            textView.text = value
+        }
+
 
     init {
         LayoutInflater.from(context).inflate(R.layout.progress_view, this, true)

@@ -72,6 +72,8 @@ class CinemaBrandViewModel @Inject constructor(
         }
     }
 
+    suspend fun deleteCinemaBrand(cinemaBrand: CinemaBrand) = cinemaBrandRepository.delete(cinemaBrand)
+
     private fun fetchList() = viewModelScope.launch {
         cinemaBrandFetchingStatusMutable.value = CinemaBrandFetchingStatus.Loading
         val result = runBlocking(

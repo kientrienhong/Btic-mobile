@@ -25,29 +25,6 @@
 
 
     <com.example.bticapplication.customview.RoundedGroupView
-        android:id="@+id/edit_icon_layout"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:layout_marginEnd="8dp"
-        android:background="@color/white"
-        android:elevation="8dp"
-        app:borderRadius="16dp"
-        app:layout_constraintBottom_toBottomOf="@id/delete_icon_layout"
-        app:layout_constraintEnd_toStartOf="@id/delete_icon_layout"
-        app:layout_constraintTop_toTopOf="@id/delete_icon_layout">
-
-        <ImageView
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:src="@drawable/edit_icon"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-    </com.example.bticapplication.customview.RoundedGroupView>
-
-    <com.example.bticapplication.customview.RoundedGroupView
         android:id="@+id/delete_icon_layout"
         android:layout_width="32dp"
         android:layout_height="32dp"

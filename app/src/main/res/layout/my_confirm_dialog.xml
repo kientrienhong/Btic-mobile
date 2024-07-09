@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:padding="8dp">
+
+    <TextView
+        android:id="@+id/content"
+        style="@style/Subtitles"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="16sp"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.example.bticapplication.customview.ProgressButton
+        android:id="@+id/btn_confirm"
+        style="@style/Button"
+        android:layout_width="100dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="16dp"
+        app:buttonBackgroundColor="@color/primary"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/content"
+        app:text="Yes"
+        app:textSizeProgressButton="20" />
+
+    <com.example.bticapplication.customview.ProgressButton
+        android:id="@+id/btn_cancel"
+        style="@style/Button"
+        android:layout_width="100dp"
+        android:layout_height="32dp"
+        app:layout_constraintBottom_toBottomOf="@id/btn_confirm"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/btn_confirm"
+        app:text="No"
+        app:textSizeProgressButton="20" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

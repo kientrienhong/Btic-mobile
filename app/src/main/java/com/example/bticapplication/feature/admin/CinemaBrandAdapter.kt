@@ -1,8 +1,8 @@
 package com.example.bticapplication.feature.admin
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -10,9 +10,12 @@ import com.example.bticapplication.databinding.AddCinemaBrandItemBinding
 import com.example.bticapplication.databinding.CinemaBrandItemBinding
 import com.example.bticapplication.feature.admin.viewholder.AddCinemaBrandViewHolder
 import com.example.bticapplication.feature.admin.viewholder.CinemaBrandViewHolder
+import com.example.bticapplication.feature.cinema.CinemaBrand
 
 class CinemaBrandAdapter(
-    private val showAddCinemaBrand: () -> Unit
+    private val fragmentManager: FragmentManager,
+    private val showAddCinemaBrand: () -> Unit,
+    private val deleteCinemaBrand: suspend (CinemaBrand) -> Unit
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private val diff = AsyncListDiffer(this, cinemaBrandDiffItemCallback)
@@ -51,7 +54,8 @@ class CinemaBrandAdapter(
                     parent,
                     false
                 ),
-                ::setSelectedId
+                fragmentManager,
+                ::setSelectedId,
             )
         }
 
@@ -62,7 +66,7 @@ class CinemaBrandAdapter(
         }
         val item = diff.currentList[position - OFFSET_FOR_ADD_VIEW]
         when (holder) {
-            is CinemaBrandViewHolder -> holder.bind(item)
+            is CinemaBrandViewHolder -> holder.bind(item, deleteCinemaBrand)
             is AddCinemaBrandViewHolder -> Unit
         }
     }

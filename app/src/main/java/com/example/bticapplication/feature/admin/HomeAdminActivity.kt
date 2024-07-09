@@ -3,7 +3,6 @@ package com.example.bticapplication.feature.admin
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
@@ -32,7 +31,11 @@ class HomeAdminActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        adapter = CinemaBrandAdapter(::showAddCinemaBrandDialog)
+        adapter = CinemaBrandAdapter(
+            supportFragmentManager,
+            ::showAddCinemaBrandDialog,
+            viewModel::deleteCinemaBrand
+        )
         binding.cinemaBrandListView.apply {
             adapter = this@HomeAdminActivity.adapter
             layoutManager = LinearLayoutManager(
