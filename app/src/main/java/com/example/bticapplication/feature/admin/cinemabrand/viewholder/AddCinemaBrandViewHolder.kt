@@ -1,4 +1,4 @@
-package com.example.bticapplication.feature.admin.viewholder
+package com.example.bticapplication.feature.admin.cinemabrand.viewholder
 
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.bticapplication.databinding.AddCinemaBrandItemBinding

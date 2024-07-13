@@ -1,4 +1,4 @@
-package com.example.bticapplication.feature.admin
+package com.example.bticapplication.feature.admin.cinemabrand
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -8,9 +8,9 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bticapplication.databinding.AddCinemaBrandItemBinding
 import com.example.bticapplication.databinding.CinemaBrandItemBinding
-import com.example.bticapplication.feature.admin.viewholder.AddCinemaBrandViewHolder
-import com.example.bticapplication.feature.admin.viewholder.CinemaBrandViewHolder
-import com.example.bticapplication.feature.cinema.CinemaBrand
+import com.example.bticapplication.feature.admin.cinemabrand.viewholder.AddCinemaBrandViewHolder
+import com.example.bticapplication.feature.admin.cinemabrand.viewholder.CinemaBrandViewHolder
+import com.example.bticapplication.feature.cinemabrand.CinemaBrand
 
 class CinemaBrandAdapter(
     private val fragmentManager: FragmentManager,

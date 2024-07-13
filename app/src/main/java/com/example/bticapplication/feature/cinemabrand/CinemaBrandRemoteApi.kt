@@ -1,4 +1,4 @@
-package com.example.bticapplication.feature.cinema
+package com.example.bticapplication.feature.cinemabrand
 
 import com.example.bticapplication.path.ServicePath
 import retrofit2.http.Body

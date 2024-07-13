@@ -5,7 +5,8 @@ import androidx.room.Room
 import com.example.bticapplication.db.AppDatabase
 import com.example.bticapplication.feature.authen.AuthLocalApi
 import com.example.bticapplication.feature.authen.AuthLocalApiImpl
-import com.example.bticapplication.feature.cinema.CinemaBrandLocalApi
+import com.example.bticapplication.feature.cinema.CinemaLocalApi
+import com.example.bticapplication.feature.cinemabrand.CinemaBrandLocalApi
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
@@ -36,5 +37,10 @@ abstract class LocalStorageModule {
         @Singleton
         fun provideCinemaBrandLocalApi(appDatabase: AppDatabase): CinemaBrandLocalApi =
             appDatabase.cinemaBrandLocalApi()
+
+        @Provides
+        @Singleton
+        fun provideCinemaLocalApi(appDatabase: AppDatabase): CinemaLocalApi =
+            appDatabase.cinemaLocalApi()
     }
 }

@@ -1,7 +1,7 @@
 package com.example.bticapplication.feature.splash
 
 import com.example.bticapplication.feature.authen.model.User
-import com.example.bticapplication.feature.cinema.CinemaBrand
+import com.example.bticapplication.feature.cinemabrand.CinemaBrand
 
 interface SplashScreenRepository {
     suspend fun refreshAccessToken(email: String, refreshToken: String): User

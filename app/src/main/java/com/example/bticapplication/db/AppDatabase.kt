@@ -4,12 +4,15 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.bticapplication.feature.cinema.CinemaBrand
-import com.example.bticapplication.feature.cinema.CinemaBrandLocalApi
+import com.example.bticapplication.feature.cinema.Cinema
+import com.example.bticapplication.feature.cinema.CinemaLocalApi
+import com.example.bticapplication.feature.cinemabrand.CinemaBrand
+import com.example.bticapplication.feature.cinemabrand.CinemaBrandLocalApi
 
-@Database(entities = [CinemaBrand::class], version = 1, exportSchema = false)
+@Database(entities = [CinemaBrand::class, Cinema::class], version = 1, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun cinemaBrandLocalApi(): CinemaBrandLocalApi
+    abstract fun cinemaLocalApi(): CinemaLocalApi
 
     companion object {
         @Volatile

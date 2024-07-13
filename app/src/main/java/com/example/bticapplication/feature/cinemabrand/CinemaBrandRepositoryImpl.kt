@@ -1,4 +1,4 @@
-package com.example.bticapplication.feature.cinema
+package com.example.bticapplication.feature.cinemabrand
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData

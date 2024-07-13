@@ -1,7 +1,8 @@
 package com.example.bticapplication.di
 
 import com.example.bticapplication.feature.authen.AuthRemoteApi
-import com.example.bticapplication.feature.cinema.CinemaBrandRemoteApi
+import com.example.bticapplication.feature.cinema.CinemaRemoteApi
+import com.example.bticapplication.feature.cinemabrand.CinemaBrandRemoteApi
 import com.example.bticapplication.path.ServicePath
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import dagger.Module
@@ -46,5 +47,10 @@ object NetworkModule {
     @Singleton
     fun provideCinemaBrandRemoteApi(retrofit: Retrofit): CinemaBrandRemoteApi =
         retrofit.create(CinemaBrandRemoteApi::class.java)
+
+    @Provides
+    @Singleton
+    fun provideCinemaRemoteApi(retrofit: Retrofit): CinemaRemoteApi =
+        retrofit.create(CinemaRemoteApi::class.java)
 
 }

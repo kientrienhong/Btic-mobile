@@ -1,4 +1,4 @@
-package com.example.bticapplication.feature.admin
+package com.example.bticapplication.feature.admin.cinemabrand
 
 import android.net.Uri
 import androidx.lifecycle.LiveData
@@ -7,8 +7,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.map
 import androidx.lifecycle.viewModelScope
 import com.example.bticapplication.extensions.runBlocking
-import com.example.bticapplication.feature.cinema.CinemaBrand
-import com.example.bticapplication.feature.cinema.CinemaBrandRepository
+import com.example.bticapplication.feature.cinemabrand.CinemaBrand
+import com.example.bticapplication.feature.cinemabrand.CinemaBrandRepository
 import com.google.firebase.Firebase
 import com.google.firebase.storage.storage
 import dagger.hilt.android.lifecycle.HiltViewModel

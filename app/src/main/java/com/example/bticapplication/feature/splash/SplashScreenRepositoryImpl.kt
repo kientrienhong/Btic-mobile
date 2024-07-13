@@ -3,9 +3,9 @@ package com.example.bticapplication.feature.splash
 import com.example.bticapplication.feature.authen.AuthRepository
 import com.example.bticapplication.feature.authen.model.RefreshAccessRequest
 import com.example.bticapplication.feature.authen.model.User
-import com.example.bticapplication.feature.cinema.CinemaBrand
-import com.example.bticapplication.feature.cinema.CinemaBrandLocalApi
-import com.example.bticapplication.feature.cinema.CinemaBrandRemoteApi
+import com.example.bticapplication.feature.cinemabrand.CinemaBrand
+import com.example.bticapplication.feature.cinemabrand.CinemaBrandLocalApi
+import com.example.bticapplication.feature.cinemabrand.CinemaBrandRemoteApi
 import javax.inject.Inject
 
 class SplashScreenRepositoryImpl @Inject constructor(

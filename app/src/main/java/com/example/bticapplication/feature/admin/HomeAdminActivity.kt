@@ -13,6 +13,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.bticapplication.R
 import com.example.bticapplication.customview.AddCinemaBrandDialog
 import com.example.bticapplication.databinding.ActivityAdminBinding
+import com.example.bticapplication.feature.admin.cinemabrand.CinemaBrandAdapter
+import com.example.bticapplication.feature.admin.cinemabrand.CinemaBrandFetchingStatus
+import com.example.bticapplication.feature.admin.cinemabrand.CinemaBrandViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

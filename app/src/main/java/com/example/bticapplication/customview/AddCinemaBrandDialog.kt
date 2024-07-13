@@ -15,8 +15,8 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.activityViewModels
 import com.example.bticapplication.databinding.AddCinemaBrandDialogLayoutBinding
-import com.example.bticapplication.feature.admin.CinemaBrandCreateStatus
-import com.example.bticapplication.feature.admin.CinemaBrandViewModel
+import com.example.bticapplication.feature.admin.cinemabrand.CinemaBrandCreateStatus
+import com.example.bticapplication.feature.admin.cinemabrand.CinemaBrandViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

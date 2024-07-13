@@ -1,4 +1,4 @@
-package com.example.bticapplication.feature.admin.viewholder
+package com.example.bticapplication.feature.admin.cinemabrand.viewholder
 
 import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
@@ -6,8 +6,8 @@ import com.bumptech.glide.Glide
 import com.example.bticapplication.R
 import com.example.bticapplication.customview.MyConfirmDialog
 import com.example.bticapplication.databinding.CinemaBrandItemBinding
-import com.example.bticapplication.feature.admin.CinemaBrandItemView
-import com.example.bticapplication.feature.cinema.CinemaBrand
+import com.example.bticapplication.feature.admin.cinemabrand.CinemaBrandItemView
+import com.example.bticapplication.feature.cinemabrand.CinemaBrand
 
 class CinemaBrandViewHolder(
     private val binding: CinemaBrandItemBinding,

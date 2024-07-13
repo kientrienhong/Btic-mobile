@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.bticapplication.extensions.runBlocking
-import com.example.bticapplication.feature.cinema.CinemaBrand
+import com.example.bticapplication.feature.cinemabrand.CinemaBrand
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject

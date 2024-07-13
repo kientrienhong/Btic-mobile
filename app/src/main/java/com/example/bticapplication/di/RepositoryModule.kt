@@ -5,10 +5,10 @@ import com.example.bticapplication.feature.authen.AuthLocalApi
 import com.example.bticapplication.feature.authen.AuthRemoteApi
 import com.example.bticapplication.feature.authen.AuthRepository
 import com.example.bticapplication.feature.authen.AuthRepositoryImpl
-import com.example.bticapplication.feature.cinema.CinemaBrandLocalApi
-import com.example.bticapplication.feature.cinema.CinemaBrandRemoteApi
-import com.example.bticapplication.feature.cinema.CinemaBrandRepository
-import com.example.bticapplication.feature.cinema.CinemaBrandRepositoryImpl
+import com.example.bticapplication.feature.cinemabrand.CinemaBrandLocalApi
+import com.example.bticapplication.feature.cinemabrand.CinemaBrandRemoteApi
+import com.example.bticapplication.feature.cinemabrand.CinemaBrandRepository
+import com.example.bticapplication.feature.cinemabrand.CinemaBrandRepositoryImpl
 import com.example.bticapplication.feature.splash.SplashScreenRepository
 import com.example.bticapplication.feature.splash.SplashScreenRepositoryImpl
 import dagger.Module

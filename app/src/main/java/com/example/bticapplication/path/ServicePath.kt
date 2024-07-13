@@ -14,4 +14,9 @@ object ServicePath {
     object CinemaBrand {
         const val BASE_PATH = "cinema-brand"
     }
+
+    object Cinema {
+        fun getBasePath(cinemaBrandId: Int): String =
+            "${CinemaBrand.BASE_PATH}/$cinemaBrandId/cinema"
+    }
 }
