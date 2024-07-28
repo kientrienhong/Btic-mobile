@@ -1,20 +1,25 @@
 package com.example.bticapplication.feature.cinema
 
 import androidx.room.Entity
-import androidx.room.Junction
+import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
-import androidx.room.Relation
 import com.example.bticapplication.feature.cinemabrand.CinemaBrand
+import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-@Entity(tableName = "cinema")
+@Entity(
+    tableName = "cinema",
+    foreignKeys = [ForeignKey(
+        entity = CinemaBrand::class,
+        parentColumns = ["id"],
+        childColumns = ["cinemaBrandId"]
+    )]
+)
 data class Cinema(
     @PrimaryKey val id: Int,
-    @Relation(parentColumn = "id", entityColumn = "idCinemaBrand", associateBy = Junction(
-        CinemaBrand::class
-    ))
-    val idCinemaBrand: Int,
+    @SerialName("idCinemaBrand")
+    val cinemaBrandId: Int,
     val name: String,
     val address: String,
 )

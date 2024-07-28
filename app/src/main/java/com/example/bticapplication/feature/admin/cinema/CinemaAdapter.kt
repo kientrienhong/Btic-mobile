@@ -6,10 +6,10 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil.ItemCallback
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import com.example.bticapplication.databinding.CinemaItemBinding
-import com.example.bticapplication.feature.cinema.Cinema
 import com.example.bticapplication.feature.admin.cinema.viewholder.CinemaViewHolder
+import com.example.bticapplication.feature.cinema.Cinema
 
-class CinemaAdapter() : Adapter<CinemaViewHolder>() {
+class CinemaAdapter : Adapter<CinemaViewHolder>() {
 
     private val diff = AsyncListDiffer(this, object : ItemCallback<Cinema>() {
         override fun areItemsTheSame(oldItem: Cinema, newItem: Cinema): Boolean =
@@ -22,9 +22,18 @@ class CinemaAdapter() : Adapter<CinemaViewHolder>() {
     private val currentList: List<Cinema>
         get() = diff.currentList
 
+    fun submitList(list: List<Cinema>) {
+        diff.submitList(list)
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CinemaViewHolder =
-        CinemaViewHolder(CinemaItemBinding.inflate(LayoutInflater.from(parent.context)))
+        CinemaViewHolder(
+            CinemaItemBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
+        )
 
     override fun onBindViewHolder(holder: CinemaViewHolder, position: Int) {
         val cinema = currentList[position]

@@ -15,7 +15,8 @@ import com.example.bticapplication.feature.cinemabrand.CinemaBrand
 class CinemaBrandAdapter(
     private val fragmentManager: FragmentManager,
     private val showAddCinemaBrand: () -> Unit,
-    private val deleteCinemaBrand: suspend (CinemaBrand) -> Unit
+    private val deleteCinemaBrand: suspend (CinemaBrand) -> Unit,
+    private val observeGetListCinemaLivaData: (Int) -> Unit
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private val diff = AsyncListDiffer(this, cinemaBrandDiffItemCallback)
@@ -96,6 +97,8 @@ class CinemaBrandAdapter(
             diff.currentList[index].isSelected = true
             notifyItemChanged(index + OFFSET_FOR_ADD_VIEW)
         }
+
+        observeGetListCinemaLivaData(id)
     }
 
     companion object {
